@@ -1,0 +1,29 @@
+
+
+添加用户   模板
+json格式  requestbody  post请求
+地址"admin/addUser" 
+{
+	"username":"simon",
+	"password":"123456",
+	"groupId":1,
+	"status":1
+}
+返回 json  
+{"result":true}
+
+
+
+用户登录  
+post格式  json格式  requestbody   post请求
+地址"/auth/login"  
+{
+ 	"username":"tom",
+	"password":"123456"
+}
+返回 json  
+{
+    "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDQxMzEwOCwiZXhwIjoxNTc1MDE3OTA4fQ.1klmiXKRgBLZM_ZRPsMdcPNdmcP-rSfdYcF043LBddyo_cvjb0UEC80aUxOHmE8rwKMN_O0mQU-pBloj5lSy6Q",
+    "tokenType": "Bearer",
+    "currentAuthority": "ADMIN"
+}
