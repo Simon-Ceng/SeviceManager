@@ -15,7 +15,7 @@ json格式  requestbody  post请求
 
 
 用户登录  
-post格式  json格式  requestbody   post请求
+json格式  requestbody   post请求
 地址"/auth/login"  
 {
  	"username":"tom",
