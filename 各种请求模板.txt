@@ -1,5 +1,3 @@
-
-
 添加用户   模板
 json格式  requestbody  post请求
 地址"admin/addUser" 
@@ -27,3 +25,14 @@ json格式  requestbody   post请求
     "tokenType": "Bearer",
     "currentAuthority": "ADMIN"
 }
+
+批量删除用户（可以只删除一个）
+json格式  requestbody   post请求
+地址"admin/deleteUser" 
+{
+	"pkids":[4,23]      //Map<String, List<Integer>>格式
+}
+返回json
+{
+	"total":2      //删除的用户个数
+}    
