@@ -1,6 +1,6 @@
 添加用户   模板
 json格式  requestbody  post请求
-地址"admin/addUser" 
+地址：admin/addUser
 {
 	"username":"simon",
 	"password":"123456",
@@ -14,7 +14,7 @@ json格式  requestbody  post请求
 
 用户登录  
 json格式  requestbody   post请求
-地址"/auth/login"  
+地址：/auth/login
 {
  	"username":"tom",
 	"password":"123456"
@@ -28,7 +28,7 @@ json格式  requestbody   post请求
 
 批量删除用户（可以只删除一个）
 json格式  requestbody   post请求
-地址"admin/deleteUser" 
+地址：admin/deleteUser
 {
 	"pkids":[4,23]      //Map<String, List<Integer>>格式
 }
@@ -36,3 +36,29 @@ json格式  requestbody   post请求
 {
 	"total":2      //删除的用户个数
 }    
+
+设备信息注入
+地址： admin/addDevice
+json格式    requestbody   post请求
+如果是设备，则
+{
+	"itemType":"device",
+	"sn":"10000002",
+	"mac":"00-01-6C-06-A1-24",
+	"keeper":"Tom",
+	"supervisor":"Tom",
+	"status":"using",
+	"cfrom":"shcool",
+	"message":"add device"
+}
+如果是物品，则
+{
+	"itemType":"item",
+	"keeper":"Tom",
+	"supervisor":"Tom",
+	"status":"using",
+	"cfrom":"shcool",
+	"message":"add device"
+}
+返回 json  
+{"result":true}
