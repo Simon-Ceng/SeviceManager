@@ -13,7 +13,7 @@ json格式  requestbody   post请求
     "currentAuthority": "ADMIN"
 }
 
-在地址：admin/ 后面的所有访问，都需要添加token认证
+在地址：/admin/ 后面的所有访问，都需要添加token认证
 格式如下：
 添加Header 
 Authorization = Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDg2NjM4OSwiZXhwIjoxNTc1NDcxMTg5fQ.qqZNJVHExE1iO9VbMMSGt6bKx3jJoLjp1nD9Kau22P0OdwYF65Dwzow2yenqz6J6jmTjWlDABom58m0Bbwn-qg
@@ -22,7 +22,7 @@ Authorization = Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDg2
 
 批量删除用户（可以只删除一个）（只有超级管理员才能操作）
 json格式  requestbody   post请求
-地址：admin/deleteUser
+地址：/admin/deleteUser
 {
 	"pkids":[4,23]      //Map<String, List<Integer>>格式
 }
@@ -32,7 +32,7 @@ json格式  requestbody   post请求
 }    
 
 设备信息注入
-地址： admin/addDevice
+地址： /admin/addDevice
 json格式    requestbody   post请求    数据类型：Map<String,String>
 如果是设备，则
 {
@@ -59,7 +59,7 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 
 
 所有设备信息查询
-地址：admin/serviceItem
+地址：/admin/serviceItem
 json格式    requestbody  get请求    数据类型：(int,int)
 
 
@@ -71,3 +71,29 @@ page=1		//当前页码
 {"item_id":"201911250003","itemType":"device","sn":"10000001","mac":"00-01-6C-06-A1-23","keeper":"Tom","supervisor":"Tom","status":"using","recordTime":"2019-11-25 15:53:17","modifyTime":"2019-11-25 15:53:17","cfrom":"shcool"},
 {"item_id":"201911250004","itemType":"device","sn":"10000002","mac":"00-01-6C-06-A1-24","keeper":"Tom","supervisor":"Tom","status":"using","recordTime":"2019-11-25 15:54:17","modifyTime":"2019-11-25 15:54:17","cfrom":"shcool"}
 ]}
+
+
+编辑设备信息（只开放使用人，负责人和使用状态）
+地址:/admin/editItem
+json格式    requestbody   post请求    数据类型：Map<String,String>
+只需要传递被修改的参数
+{
+	"pkId":6,
+	"itemId":"201911260001",
+	"keeper":"Nico",
+	"supervisor":"Simon",
+	"status":"using"
+}
+{
+	"pkId":6,
+	"itemId":"201911260001",
+	"keeper":"Nico",
+	"supervisor":"Simon",
+}
+{
+	"pkId":6,
+	"itemId":"201911260001",
+	"keeper":"Nico",
+}
+返回json
+{"result":true}
