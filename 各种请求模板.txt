@@ -17,7 +17,7 @@ json格式  requestbody   post请求
 格式如下：
 添加Header 
 Authorization = Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDg2NjM4OSwiZXhwIjoxNTc1NDcxMTg5fQ.qqZNJVHExE1iO9VbMMSGt6bKx3jJoLjp1nD9Kau22P0OdwYF65Dwzow2yenqz6J6jmTjWlDABom58m0Bbwn-qg
-格式为“Bearer”+" "+token    Bearer加空格加token指令1
+格式为“Bearer”+" "+token    Bearer加空格加token指令
 
 
 批量删除用户（可以只删除一个）（只有超级管理员才能操作）
