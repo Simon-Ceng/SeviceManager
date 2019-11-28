@@ -68,7 +68,8 @@ json格式  requestbody   post请求    数据类型：Map<String,String>
 设备信息注入
 地址： /admin/addDevice
 json格式    requestbody   post请求    数据类型：Map<String,String>
-如果是设备，则
+
+如果是设备，发送格式为：
 {
 	"itemType":"device",
 	"sn":"10000002",
@@ -79,7 +80,7 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 	"cfrom":"shcool",
 	"message":"add device"
 }
-如果是物品，则
+如果是物品，发送格式为：
 {
 	"itemType":"item",
 	"keeper":"Tom",
@@ -88,39 +89,222 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 	"cfrom":"shcool",
 	"message":"add device"
 }
-返回 json  
+
+返回格式：
 {"result":true}
 **************************************************************************************************************
 
 
 **************************************************************************************************************
 资产废弃
+地址：  /admin/retire
+json格式    requestbody   post请求    数据类型：Map<String,String>
+发送格式：
+{
+	"pkId":10,		 
+	"itemId":"201911260005",
+	"recorder":"nico",        //实行废弃操作的操作者
+	"detail":"物品废弃"	      //废弃理由
+}
 
+返回格式：
+{"result":true}
 **************************************************************************************************************
 
 
 **************************************************************************************************************
-所有设备信息查询
+健康资产的信息查询
 地址：/admin/serviceItem
-json格式    requestbody  get请求    数据类型：(int,int)
+requestbody  get请求    数据类型：(int,int)
 
-
-rowsPerPage=10   //每页显示行数
-page=1		//当前页码
-
-返回 json 
-{"total":2,"list":[
-{"item_id":"201911250003","itemType":"device","sn":"10000001","mac":"00-01-6C-06-A1-23","keeper":"Tom","supervisor":"Tom","status":"using","recordTime":"2019-11-25 15:53:17",
-"modifyTime":"2019-11-25 15:53:17","cfrom":"shcool"},
-{"item_id":"201911250004","itemType":"device","sn":"10000002","mac":"00-01-6C-06-A1-24","keeper":"Tom","supervisor":"Tom","status":"using","recordTime":"2019-11-25 15:54:17",
-"modifyTime":"2019-11-25 15:54:17","cfrom":"shcool"}
-]}
+发送参数：
+rowsPerPage = X   //当前页面的最大显示行数
+page = 1	  //当前页码
+ 
+返回格式： （一次最多为X个）
+{
+    "total": 20,
+    "list": [
+        {
+            "pkId": 3,
+            "item_id": "201911250003",
+            "itemType": "device",
+            "sn": "10000001",
+            "mac": "00-01-6C-06-A1-23",
+            "keeper": "Tom",
+            "supervisor": "Tom",
+            "status": "using",
+            "cfrom": "shcool",
+            "recordTime": "2019-11-25 15:53:17",
+            "modifyTime": "2019-11-25 15:53:17"
+        },
+        {
+            "pkId": 4,
+            "item_id": "201911250004",
+            "itemType": "device",
+            "sn": "10000002",
+            "mac": "00-01-6C-06-A1-24",
+            "keeper": "Tom",
+            "supervisor": "Tom",
+            "status": "using",
+            "cfrom": "shcool",
+            "recordTime": "2019-11-25 15:54:17",
+            "modifyTime": "2019-11-25 15:54:17"
+        },
+        {
+            "pkId": 6,
+            "item_id": "201911260001",
+            "itemType": "device",
+            "sn": "10000004",
+            "mac": "00-01-6C-06-A1-31",
+            "keeper": "Nico",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:05:23",
+            "modifyTime": "2019-11-28 00:53:24"
+        },
+        {
+            "pkId": 7,
+            "item_id": "201911260002",
+            "itemType": "device",
+            "sn": "10000005",
+            "mac": "00-01-6C-06-A1-11",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:05:41",
+            "modifyTime": "2019-11-26 20:05:41"
+        },
+        {
+            "pkId": 8,
+            "item_id": "201911260003",
+            "itemType": "device",
+            "sn": "10000006",
+            "mac": "00-01-6C-06-A1-11",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:05:46",
+            "modifyTime": "2019-11-26 20:05:46"
+        },
+        {
+            "pkId": 9,
+            "item_id": "201911260004",
+            "itemType": "device",
+            "sn": "10000007",
+            "mac": "00-01-6C-06-A1-11",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:05:51",
+            "modifyTime": "2019-11-26 20:05:51"
+        },
+        {
+            "pkId": 18,
+            "item_id": "201911260013",
+            "itemType": "item",
+            "sn": null,
+            "mac": null,
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "school",
+            "recordTime": "2019-11-26 20:19:56",
+            "modifyTime": "2019-11-26 20:19:56"
+        },
+        {
+            "pkId": 19,
+            "item_id": "201911260014",
+            "itemType": "item",
+            "sn": null,
+            "mac": null,
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "school",
+            "recordTime": "2019-11-26 20:19:57",
+            "modifyTime": "2019-11-26 20:19:57"
+        },
+        {
+            "pkId": 20,
+            "item_id": "201911260015",
+            "itemType": "item",
+            "sn": null,
+            "mac": null,
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "school",
+            "recordTime": "2019-11-26 20:19:57",
+            "modifyTime": "2019-11-26 20:19:57"
+        },
+        {
+            "pkId": 21,
+            "item_id": "201911260016",
+            "itemType": "item",
+            "sn": null,
+            "mac": null,
+            "keeper": "Nico",
+            "supervisor": "Jack",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:20:09",
+            "modifyTime": "2019-11-28 20:45:38"
+        }
+    ]
+}
 **************************************************************************************************************
 
+
+**************************************************************************************************************
+废弃资产的信息查询
+地址：/admin/retireItem
+requestbody  get请求    数据类型：(int,int)
+
+发送参数：
+rowsPerPage = X   //当前页面的最大显示行数
+page = 1	  //当前页码
+
+返回格式：同上
+**************************************************************************************************************
+
+
+**************************************************************************************************************
+所有设备的信息查询
+地址：/admin/Device
+requestbody  get请求    数据类型：(int,int)
+
+发送参数：
+rowsPerPage = X   //当前页面的最大显示行数
+page = 1	  //当前页码
+
+返回格式：同上
+**************************************************************************************************************
+
+
+**************************************************************************************************************
+所有物品的信息查询
+地址：/admin/Item
+requestbody  get请求    数据类型：(int,int)
+
+发送参数：
+rowsPerPage = X   //当前页面的最大显示行数
+page = 1	  //当前页码
+
+返回格式：同上
+**************************************************************************************************************
+
+
+**************************************************************************************************************
 编辑设备信息（只开放使用人，负责人和使用状态）
 地址:/admin/editItem
 json格式    requestbody   post请求    数据类型：Map<String,String>
-只需要传递被修改的参数
+只需要传递被修改的参数 (keeper supervisor status)
+发送格式：
 {
 	"pkId":6,
 	"itemId":"201911260001",
@@ -139,5 +323,10 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 	"itemId":"201911260001",
 	"keeper":"Nico",
 }
-返回json
+返回格式：
 {"result":true}
+**************************************************************************************************************
+
+
+
+
