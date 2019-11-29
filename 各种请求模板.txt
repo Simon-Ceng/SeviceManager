@@ -9,13 +9,21 @@ json格式  requestbody   post请求
 	"password":"123456"
 }
 返回 json  
+若登录成功
 {
     "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDQxMzEwOCwiZXhwIjoxNTc1MDE3OTA
     4fQ.1klmiXKRgBLZM_ZRPsMdcPNdmcP-rSfdYcF043LBddyo_cvjb0UEC80aUxOHmE8rwKMN_O0mQU-pBloj5lSy6Q",
     "tokenType": "Bearer",
-    "currentAuthority": "ADMIN"
+    "currentAuthority": "ADMIN" 或者"SUPER_ADMIN"
+}
+若登录失败
+{
+    "accessToken": null,
+    "tokenType": "Bearer",
+    "currentAuthority": "Password error"
 }
 **************************************************************************************************************
+
 
 **************************************************************************************************************
 用户权限检验
@@ -32,6 +40,7 @@ fQ.qqZNJVHExE1iO9VbMMSGt6bKx3jJoLjp1nD9Kau22P0OdwYF65Dwzow2yenqz6J6jmTjWlDABom58
 
 **************************************************************************************************************
 
+
 **************************************************************************************************************
 批量删除用户（可以只删除一个）
 json格式  requestbody   post请求     数据类型：Map<String,String>
@@ -40,9 +49,14 @@ json格式  requestbody   post请求     数据类型：Map<String,String>
 	"pkids":[4,23]      //Map<String, List<Integer>>格式
 }
 返回json
+若输入的用户ID正确，删除成功
 {
 	"total":2      //删除的用户个数
-	}    
+}    
+若输入的用户ID错误或已经被删除
+{
+	"total":0      //删除用户个数为0
+}
 **************************************************************************************************************
 
 
@@ -58,8 +72,15 @@ json格式  requestbody   post请求    数据类型：Map<String,String>
 	"groupId":1
 }
 返回格式
+操作成功
 {
-	"result":true
+    "result": true,
+    "status": 200
+}
+操作失败
+{
+	"result":false,
+	"status": 500
 }
 **************************************************************************************************************
 
@@ -91,7 +112,16 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 }
 
 返回格式：
-{"result":true}
+操作成功
+{
+    "result": true,
+    "status": 200
+}
+操作失败
+{
+	"result":false,
+	"status": 500
+}
 **************************************************************************************************************
 
 
@@ -108,7 +138,19 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 }
 
 返回格式：
-{"result":true}
+操作成功
+{
+    "result": true,
+    "status": 200
+}
+操作失败
+{
+    "timestamp": "2019-11-29T07:38:52.328+0000",
+    "status": 500,
+    "error": "Internal Server Error",
+    "message": "No message available",
+    "path": "/admin/retire"
+}
 **************************************************************************************************************
 
 
@@ -122,6 +164,7 @@ rowsPerPage = X   //当前页面的最大显示行数
 page = 1	  //当前页码
  
 返回格式： （一次最多为X个）
+若查询正确
 {
     "total": 20,
     "list": [
@@ -257,6 +300,11 @@ page = 1	  //当前页码
         }
     ]
 }
+若数据库为空
+{
+    "total": 0,
+    "list": []
+}
 **************************************************************************************************************
 
 
@@ -300,6 +348,43 @@ page = 1	  //当前页码
 
 
 **************************************************************************************************************
+资产历史信息查询
+地址：/admin/history
+requestbody  get请求    数据类型：(int,int,String)
+
+发送参数：
+rowsPerPage = X   	//当前页面的最大显示行数
+page = 1	  	//当前页码
+itemId = 201911290016   //所查询的资产的资产号
+
+返回格式：
+若查询正确
+{
+    "total": 3,
+    "list": [
+        {
+            "item_id": "201911260016",
+            "modify_history": "2019-11-28 20:45:38  Keeper changes to Nico.  Supervisor changes to Jack."
+        },
+        {
+            "item_id": "201911260016",
+            "modify_history": "2019-11-28 23:15:25  Keeper changes to Nico.  Supervisor changes to Jack."
+        },
+        {
+            "item_id": "201911260016",
+            "modify_history": "2019-11-28 23:15:26  Keeper changes to Nico.  Supervisor changes to Jack."
+        }
+    ]
+}
+若查无此号码
+{
+    "total": 0,
+    "list": []
+}
+**************************************************************************************************************
+
+
+**************************************************************************************************************
 编辑设备信息（只开放使用人，负责人和使用状态）
 地址:/admin/editItem
 json格式    requestbody   post请求    数据类型：Map<String,String>
@@ -324,7 +409,16 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 	"keeper":"Nico",
 }
 返回格式：
-{"result":true}
+若编辑成功
+{
+    "result": true,
+    "status": 200
+}
+若编辑失败
+{
+    "result": false,
+    "status": 500
+}
 **************************************************************************************************************
 
 
