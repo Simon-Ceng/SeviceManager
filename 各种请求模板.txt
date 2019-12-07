@@ -317,12 +317,67 @@ requestbody  get请求    数据类型：(int,int)
 rowsPerPage = X   //当前页面的最大显示行数
 page = 1	  //当前页码
 
-返回格式：同上
+返回格式：
+{
+    "total": 5,
+    "list": [
+        {
+            "pkId": 10,
+            "item_id": "201911260005",
+            "itemType": "device",
+            "keeper": "Nico",
+            "supervisor": "Jack",
+            "recordTime": "2019-11-26 20:05:57",
+            "retireTime": "2019-11-28 20:54:53",
+            "detail": "物品废弃"
+        },
+        {
+            "pkId": 17,
+            "item_id": "201911260012",
+            "itemType": "item",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "recordTime": "2019-11-26 21:17:53",
+            "retireTime": "2019-11-27 21:17:53",
+            "detail": "物品废弃"
+        },
+        {
+            "pkId": 18,
+            "item_id": "201911260013",
+            "itemType": "item",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "recordTime": "2019-11-26 20:19:56",
+            "retireTime": "2019-11-29 15:53:42",
+            "detail": "此物品已经被摔坏"
+        },
+        {
+            "pkId": 25,
+            "item_id": "201911280001",
+            "itemType": "item",
+            "keeper": "Jack",
+            "supervisor": "Simon",
+            "recordTime": "2019-11-28 19:34:47",
+            "retireTime": "2019-12-07 00:56:18",
+            "detail": "测试"
+        },
+        {
+            "pkId": 29,
+            "item_id": "201911280005",
+            "itemType": "device",
+            "keeper": "Nico",
+            "supervisor": "Simon",
+            "recordTime": "2019-11-28 20:29:27",
+            "retireTime": "2019-12-07 00:54:47",
+            "detail": "postman"
+        }
+    ]
+}
 **************************************************************************************************************
 
 
 **************************************************************************************************************
-所有设备的信息查询
+所有健康设备的信息查询
 地址：/admin/Device
 requestbody  get请求    数据类型：(int,int)
 
@@ -330,12 +385,134 @@ requestbody  get请求    数据类型：(int,int)
 rowsPerPage = X   //当前页面的最大显示行数
 page = 1	  //当前页码
 
-返回格式：同上
+返回格式：
+{
+    "total": 9,
+    "list": [
+        {
+            "pkId": 3,
+            "item_id": "201911250003",
+            "itemType": "device",
+            "sn": "10000001",
+            "mac": "00-01-6C-06-A1-23",
+            "keeper": "Tom",
+            "supervisor": "Tom",
+            "status": "using",
+            "cfrom": "shcool",
+            "recordTime": "2019-11-25 15:53:17",
+            "modifyTime": "2019-11-25 15:53:17"
+        },
+        {
+            "pkId": 4,
+            "item_id": "201911250004",
+            "itemType": "device",
+            "sn": "10000002",
+            "mac": "00-01-6C-06-A1-24",
+            "keeper": "Tom",
+            "supervisor": "Tom",
+            "status": "using",
+            "cfrom": "shcool",
+            "recordTime": "2019-11-25 15:54:17",
+            "modifyTime": "2019-11-25 15:54:17"
+        },
+        {
+            "pkId": 6,
+            "item_id": "201911260001",
+            "itemType": "device",
+            "sn": "10000004",
+            "mac": "00-01-6C-06-A1-31",
+            "keeper": "Nico",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:05:23",
+            "modifyTime": "2019-11-28 00:53:24"
+        },
+        {
+            "pkId": 7,
+            "item_id": "201911260002",
+            "itemType": "device",
+            "sn": "10000005",
+            "mac": "00-01-6C-06-A1-11",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:05:41",
+            "modifyTime": "2019-11-26 20:05:41"
+        },
+        {
+            "pkId": 8,
+            "item_id": "201911260003",
+            "itemType": "device",
+            "sn": "10000006",
+            "mac": "00-01-6C-06-A1-11",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:05:46",
+            "modifyTime": "2019-11-26 20:05:46"
+        },
+        {
+            "pkId": 9,
+            "item_id": "201911260004",
+            "itemType": "device",
+            "sn": "10000007",
+            "mac": "00-01-6C-06-A1-11",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:05:51",
+            "modifyTime": "2019-11-26 20:05:51"
+        },
+        {
+            "pkId": 26,
+            "item_id": "201911280002",
+            "itemType": "device",
+            "sn": "10000010",
+            "mac": "01-31-7C-06-A1-66",
+            "keeper": "Nico",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "school",
+            "recordTime": "2019-11-28 20:24:52",
+            "modifyTime": "2019-11-28 20:24:52"
+        },
+        {
+            "pkId": 27,
+            "item_id": "201911280003",
+            "itemType": "device",
+            "sn": "10000010",
+            "mac": "01-31-7C-06-A1-66",
+            "keeper": "Nico",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "school",
+            "recordTime": "2019-11-28 20:26:49",
+            "modifyTime": "2019-11-28 20:26:49"
+        },
+        {
+            "pkId": 28,
+            "item_id": "201911280004",
+            "itemType": "device",
+            "sn": "10000011",
+            "mac": "01-31-7C-06-A1-76",
+            "keeper": "Nico",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "school",
+            "recordTime": "2019-11-28 20:28:01",
+            "modifyTime": "2019-11-28 20:28:01"
+        }
+    ]
+}
 **************************************************************************************************************
 
 
 **************************************************************************************************************
-所有物品的信息查询
+所有健康物品的信息查询
 地址：/admin/Item
 requestbody  get请求    数据类型：(int,int)
 
@@ -343,7 +520,78 @@ requestbody  get请求    数据类型：(int,int)
 rowsPerPage = X   //当前页面的最大显示行数
 page = 1	  //当前页码
 
-返回格式：同上
+返回格式：
+{
+    "total": 6,
+    "list": [
+        {
+            "pkId": 19,
+            "item_id": "201911260014",
+            "itemType": "item",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "school",
+            "recordTime": "2019-11-26 20:19:57",
+            "modifyTime": "2019-11-26 20:19:57"
+        },
+        {
+            "pkId": 20,
+            "item_id": "201911260015",
+            "itemType": "item",
+            "keeper": "Simon",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "school",
+            "recordTime": "2019-11-26 20:19:57",
+            "modifyTime": "2019-11-26 20:19:57"
+        },
+        {
+            "pkId": 21,
+            "item_id": "201911260016",
+            "itemType": "item",
+            "keeper": "Simon",
+            "supervisor": "Nico",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:20:09",
+            "modifyTime": "2019-11-29 16:05:58"
+        },
+        {
+            "pkId": 22,
+            "item_id": "201911260017",
+            "itemType": "item",
+            "keeper": "Lina",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:20:10",
+            "modifyTime": "2019-11-26 20:20:10"
+        },
+        {
+            "pkId": 23,
+            "item_id": "201911260018",
+            "itemType": "item",
+            "keeper": "Lina",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:20:10",
+            "modifyTime": "2019-11-26 20:20:10"
+        },
+        {
+            "pkId": 24,
+            "item_id": "201911260019",
+            "itemType": "item",
+            "keeper": "Lina",
+            "supervisor": "Simon",
+            "status": "using",
+            "cfrom": "libary",
+            "recordTime": "2019-11-26 20:20:11",
+            "modifyTime": "2019-11-26 20:20:11"
+        }
+    ]
+}
 **************************************************************************************************************
 
 
