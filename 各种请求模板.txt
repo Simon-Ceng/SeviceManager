@@ -130,8 +130,7 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 地址：  /admin/retire
 json格式    requestbody   post请求    数据类型：Map<String,String>
 发送格式：
-{
-	"pkId":10,		 
+{	 
 	"itemId":"201911260005",
 	"recorder":"nico",        //实行废弃操作的操作者
 	"detail":"物品废弃"	      //废弃理由
@@ -169,7 +168,6 @@ page = 1	  //当前页码
     "total": 20,
     "list": [
         {
-            "pkId": 3,
             "item_id": "201911250003",
             "itemType": "device",
             "sn": "10000001",
@@ -182,7 +180,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-25 15:53:17"
         },
         {
-            "pkId": 4,
             "item_id": "201911250004",
             "itemType": "device",
             "sn": "10000002",
@@ -195,7 +192,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-25 15:54:17"
         },
         {
-            "pkId": 6,
             "item_id": "201911260001",
             "itemType": "device",
             "sn": "10000004",
@@ -208,7 +204,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-28 00:53:24"
         },
         {
-            "pkId": 7,
             "item_id": "201911260002",
             "itemType": "device",
             "sn": "10000005",
@@ -221,7 +216,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:05:41"
         },
         {
-            "pkId": 8,
             "item_id": "201911260003",
             "itemType": "device",
             "sn": "10000006",
@@ -234,7 +228,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:05:46"
         },
         {
-            "pkId": 9,
             "item_id": "201911260004",
             "itemType": "device",
             "sn": "10000007",
@@ -247,7 +240,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:05:51"
         },
         {
-            "pkId": 18,
             "item_id": "201911260013",
             "itemType": "item",
             "sn": null,
@@ -260,7 +252,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:19:56"
         },
         {
-            "pkId": 19,
             "item_id": "201911260014",
             "itemType": "item",
             "sn": null,
@@ -273,7 +264,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:19:57"
         },
         {
-            "pkId": 20,
             "item_id": "201911260015",
             "itemType": "item",
             "sn": null,
@@ -286,7 +276,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:19:57"
         },
         {
-            "pkId": 21,
             "item_id": "201911260016",
             "itemType": "item",
             "sn": null,
@@ -322,7 +311,6 @@ page = 1	  //当前页码
     "total": 5,
     "list": [
         {
-            "pkId": 10,
             "item_id": "201911260005",
             "itemType": "device",
             "keeper": "Nico",
@@ -332,7 +320,7 @@ page = 1	  //当前页码
             "detail": "物品废弃"
         },
         {
-            "pkId": 17,
+
             "item_id": "201911260012",
             "itemType": "item",
             "keeper": "Simon",
@@ -342,7 +330,7 @@ page = 1	  //当前页码
             "detail": "物品废弃"
         },
         {
-            "pkId": 18,
+
             "item_id": "201911260013",
             "itemType": "item",
             "keeper": "Simon",
@@ -352,7 +340,7 @@ page = 1	  //当前页码
             "detail": "此物品已经被摔坏"
         },
         {
-            "pkId": 25,
+
             "item_id": "201911280001",
             "itemType": "item",
             "keeper": "Jack",
@@ -361,8 +349,7 @@ page = 1	  //当前页码
             "retireTime": "2019-12-07 00:56:18",
             "detail": "测试"
         },
-        {
-            "pkId": 29,
+	{
             "item_id": "201911280005",
             "itemType": "device",
             "keeper": "Nico",
@@ -390,7 +377,6 @@ page = 1	  //当前页码
     "total": 9,
     "list": [
         {
-            "pkId": 3,
             "item_id": "201911250003",
             "itemType": "device",
             "sn": "10000001",
@@ -403,7 +389,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-25 15:53:17"
         },
         {
-            "pkId": 4,
             "item_id": "201911250004",
             "itemType": "device",
             "sn": "10000002",
@@ -416,7 +401,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-25 15:54:17"
         },
         {
-            "pkId": 6,
             "item_id": "201911260001",
             "itemType": "device",
             "sn": "10000004",
@@ -429,7 +413,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-28 00:53:24"
         },
         {
-            "pkId": 7,
             "item_id": "201911260002",
             "itemType": "device",
             "sn": "10000005",
@@ -442,7 +425,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:05:41"
         },
         {
-            "pkId": 8,
             "item_id": "201911260003",
             "itemType": "device",
             "sn": "10000006",
@@ -455,7 +437,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:05:46"
         },
         {
-            "pkId": 9,
             "item_id": "201911260004",
             "itemType": "device",
             "sn": "10000007",
@@ -468,7 +449,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:05:51"
         },
         {
-            "pkId": 26,
             "item_id": "201911280002",
             "itemType": "device",
             "sn": "10000010",
@@ -481,7 +461,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-28 20:24:52"
         },
         {
-            "pkId": 27,
             "item_id": "201911280003",
             "itemType": "device",
             "sn": "10000010",
@@ -494,7 +473,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-28 20:26:49"
         },
         {
-            "pkId": 28,
             "item_id": "201911280004",
             "itemType": "device",
             "sn": "10000011",
@@ -525,7 +503,6 @@ page = 1	  //当前页码
     "total": 6,
     "list": [
         {
-            "pkId": 19,
             "item_id": "201911260014",
             "itemType": "item",
             "keeper": "Simon",
@@ -536,7 +513,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:19:57"
         },
         {
-            "pkId": 20,
             "item_id": "201911260015",
             "itemType": "item",
             "keeper": "Simon",
@@ -547,7 +523,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:19:57"
         },
         {
-            "pkId": 21,
             "item_id": "201911260016",
             "itemType": "item",
             "keeper": "Simon",
@@ -558,7 +533,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-29 16:05:58"
         },
         {
-            "pkId": 22,
             "item_id": "201911260017",
             "itemType": "item",
             "keeper": "Lina",
@@ -569,7 +543,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:20:10"
         },
         {
-            "pkId": 23,
             "item_id": "201911260018",
             "itemType": "item",
             "keeper": "Lina",
@@ -580,7 +553,6 @@ page = 1	  //当前页码
             "modifyTime": "2019-11-26 20:20:10"
         },
         {
-            "pkId": 24,
             "item_id": "201911260019",
             "itemType": "item",
             "keeper": "Lina",
@@ -665,20 +637,17 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 只需要传递被修改的参数 (keeper supervisor status)
 发送格式：
 {
-	"pkId":6,
 	"itemId":"201911260001",
 	"keeper":"Nico",
 	"supervisor":"Simon",
 	"status":"using"
 }
 {
-	"pkId":6,
 	"itemId":"201911260001",
 	"keeper":"Nico",
 	"supervisor":"Simon",
 }
 {
-	"pkId":6,
 	"itemId":"201911260001",
 	"keeper":"Nico",
 }
