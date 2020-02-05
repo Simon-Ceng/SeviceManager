@@ -66,9 +66,10 @@ json格式  requestbody   post请求    数据类型：Map<String,String>
 地址：/user/addUser   
 发送格式：
 {
-	"username":"123456",
+	"sign":"KEIRUCFUWEI502",
+	"username":"invited2",
 	"password":"123456",
-	"status":1,          (1为管理员，2为超级管理员)
+	"status":1,         
 	"groupId":1
 }
 返回格式
