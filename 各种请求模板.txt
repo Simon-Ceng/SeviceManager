@@ -26,51 +26,28 @@ json格式  requestbody   post请求
 
 
 **************************************************************************************************************
-用户权限检验
+用户权限检验(此处有修改)
 
 在地址：/admin/ 后面的所有访问，都需要添加token认证
 格式如下：
 添加Header 
-Authorization = Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDg2NjM4OSwiZXhwIjoxNTc1NDcxMTg5
+token = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDg2NjM4OSwiZXhwIjoxNTc1NDcxMTg5
 fQ.qqZNJVHExE1iO9VbMMSGt6bKx3jJoLjp1nD9Kau22P0OdwYF65Dwzow2yenqz6J6jmTjWlDABom58m0Bbwn-qg
-格式为“Bearer”+" "+token    Bearer加空格加token指令
 
-在地址：/user/  后面的所有访问，都需要超级管理员的用户权限
 具体权限操作由后台完成，前端只需要正常发送token检验即可
 
 **************************************************************************************************************
 
 
 **************************************************************************************************************
-批量删除用户（可以只删除一个）
-json格式  requestbody   post请求     数据类型：Map<String,String>
-地址：/user/deleteUser
-{
-	"pkids":[4,23]      //Map<String, List<Integer>>格式
-}
-返回json
-若输入的用户ID正确，删除成功
-{
-	"total":2      //删除的用户个数
-}    
-若输入的用户ID错误或已经被删除
-{
-	"total":0      //删除用户个数为0
-}
-**************************************************************************************************************
-
-
-**************************************************************************************************************
-添加用户
-json格式  requestbody   post请求    数据类型：Map<String,String>
-地址：/user/addUser   
+用户注册(此处有修改)
+json格式  requestbody   post请求   
+地址：/user/register   
 发送格式：
 {
 	"sign":"KEIRUCFUWEI502",
 	"username":"invited2",
 	"password":"123456",
-	"status":1,         
-	"groupId":1
 }
 返回格式
 操作成功
@@ -664,7 +641,3 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
     "status": 500
 }
 **************************************************************************************************************
-
-
-
-
