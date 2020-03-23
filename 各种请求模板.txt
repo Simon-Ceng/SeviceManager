@@ -3,15 +3,15 @@
 **************************************************************************************************************
 用户登录  
 json格式  requestbody   post请求
-地址：/auth/login
+地址：/user/login
 {
  	"username":"tom",
-	"password":"123456"
+	"password":"123"
 }
 返回 json  
 若登录成功
 {
-    "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDQxMzEwOCwiZXhwIjoxNTc1MDE3OTA
+    "accessToken": "eyJhqbGciOiJIUUxMiJ7.eyJzdWIiOiJncm91cCIsImlhdCI6MTU3NDQxMzEwOCwiZXhwIjoxNTc1MDE3OTA
     4fQ.1klmiXKRgBLZM_ZRPsMdcPNdmcP-rSfdYcF043LBddyo_cvjb0UEC80aUxOHmE8rwKMN_O0mQU-pBloj5lSy6Q",
     "tokenType": "Bearer",
     "currentAuthority": "ADMIN" 或者"SUPER_ADMIN"
@@ -23,6 +23,19 @@ json格式  requestbody   post请求
     "currentAuthority": "Password error"
 }
 **************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 **************************************************************************************************************
@@ -39,21 +52,36 @@ fQ.qqZNJVHExE1iO9VbMMSGt6bKx3jJoLjp1nD9Kau22P0OdwYF65Dwzow2yenqz6J6jmTjWlDABom58
 **************************************************************************************************************
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **************************************************************************************************************
-用户注册(此处有修改)
+用户注册
 json格式  requestbody   post请求   
 地址：/user/register   
 发送格式：
 {
-	"sign":"KEIRUCFUWEI502",
+	"sign":"KEIRUCFUWxxxxx",
 	"username":"invited2",
-	"password":"123456",
+	"password":"123"
 }
 返回格式
 操作成功
 {
     "result": true,
     "status": 200
+	
 }
 操作失败
 {
@@ -63,6 +91,77 @@ json格式  requestbody   post请求
 **************************************************************************************************************
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**************************************************************************************************************
+申请资产号
+
+get请求
+
+地址：/admin/apply   
+
+返回格式
+{
+	"result": 200,
+	"status": true,
+    "itemId": "202003180001"
+}
+**************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**************************************************************************************************************
+打印失败
+
+get请求
+
+地址：/admin/printerError   
+
+{
+	"result":false,
+	"status": 500
+}
+**************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **************************************************************************************************************
 设备信息注入
 地址： /admin/addDevice
@@ -70,6 +169,7 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 
 如果是设备，发送格式为：
 {
+	"itemId": "202003180001"
 	"itemType":"device",
 	"sn":"10000002",
 	"mac":"00-01-6C-06-A1-24",
@@ -81,6 +181,7 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 }
 如果是物品，发送格式为：
 {
+	"itemId": "202003180001"
 	"itemType":"item",
 	"keeper":"Tom",
 	"supervisor":"Tom",
@@ -93,14 +194,80 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 操作成功
 {
     "result": true,
-    "status": 200
+    "status": 200,
+	"itemId": "202003180001"
 }
 操作失败
 {
 	"result":false,
-	"status": 500
+	"status": 500,
+	"itemId": ""
 }
 **************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**************************************************************************************************************
+编辑设备信息（只开放使用人，负责人和使用状态）
+地址:/admin/editItem
+json格式    requestbody   post请求    数据类型：Map<String,String>
+只需要传递被修改的参数 (keeper supervisor status)
+发送格式：
+{
+	"itemId":"201911260001",
+	"keeper":"Nico",
+	"supervisor":"Simon",
+	"status":"库存"
+}
+{
+	"itemId":"201911260001",
+	"keeper":"Nico",
+	"supervisor":"Simon",
+}
+{
+	"itemId":"201911260001",
+	"keeper":"Nico",
+}
+返回格式：
+若编辑成功
+{
+    "result": true,
+    "status": 200
+}
+若编辑失败
+{
+    "result": false,
+    "status": 500
+}
+**************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 **************************************************************************************************************
@@ -122,13 +289,18 @@ json格式    requestbody   post请求    数据类型：Map<String,String>
 }
 操作失败
 {
-    "timestamp": "2019-11-29T07:38:52.328+0000",
-    "status": 500,
-    "error": "Internal Server Error",
-    "message": "No message available",
-    "path": "/admin/retire"
+	"result": false,
+    "status": 500
 }
 **************************************************************************************************************
+
+
+
+
+
+
+
+
 
 
 **************************************************************************************************************
@@ -152,119 +324,13 @@ page = 1	  //当前页码
             "mac": "00-01-6C-06-A1-23",
             "keeper": "Tom",
             "supervisor": "Tom",
-            "status": "using",
-            "cfrom": "shcool",
-            "recordTime": "2019-11-25 15:53:17",
-            "modifyTime": "2019-11-25 15:53:17"
+            "status": "库存",
+            "cfrom": "中山大学",
+            "record_time": "2019-11-25 15:53:17",
+            "modify_time": "2019-11-25 15:53:17",
+			"message": "子越的计算器"
         },
-        {
-            "item_id": "201911250004",
-            "itemType": "device",
-            "sn": "10000002",
-            "mac": "00-01-6C-06-A1-24",
-            "keeper": "Tom",
-            "supervisor": "Tom",
-            "status": "using",
-            "cfrom": "shcool",
-            "recordTime": "2019-11-25 15:54:17",
-            "modifyTime": "2019-11-25 15:54:17"
-        },
-        {
-            "item_id": "201911260001",
-            "itemType": "device",
-            "sn": "10000004",
-            "mac": "00-01-6C-06-A1-31",
-            "keeper": "Nico",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:05:23",
-            "modifyTime": "2019-11-28 00:53:24"
-        },
-        {
-            "item_id": "201911260002",
-            "itemType": "device",
-            "sn": "10000005",
-            "mac": "00-01-6C-06-A1-11",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:05:41",
-            "modifyTime": "2019-11-26 20:05:41"
-        },
-        {
-            "item_id": "201911260003",
-            "itemType": "device",
-            "sn": "10000006",
-            "mac": "00-01-6C-06-A1-11",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:05:46",
-            "modifyTime": "2019-11-26 20:05:46"
-        },
-        {
-            "item_id": "201911260004",
-            "itemType": "device",
-            "sn": "10000007",
-            "mac": "00-01-6C-06-A1-11",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:05:51",
-            "modifyTime": "2019-11-26 20:05:51"
-        },
-        {
-            "item_id": "201911260013",
-            "itemType": "item",
-            "sn": null,
-            "mac": null,
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "school",
-            "recordTime": "2019-11-26 20:19:56",
-            "modifyTime": "2019-11-26 20:19:56"
-        },
-        {
-            "item_id": "201911260014",
-            "itemType": "item",
-            "sn": null,
-            "mac": null,
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "school",
-            "recordTime": "2019-11-26 20:19:57",
-            "modifyTime": "2019-11-26 20:19:57"
-        },
-        {
-            "item_id": "201911260015",
-            "itemType": "item",
-            "sn": null,
-            "mac": null,
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "school",
-            "recordTime": "2019-11-26 20:19:57",
-            "modifyTime": "2019-11-26 20:19:57"
-        },
-        {
-            "item_id": "201911260016",
-            "itemType": "item",
-            "sn": null,
-            "mac": null,
-            "keeper": "Nico",
-            "supervisor": "Jack",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:20:09",
-            "modifyTime": "2019-11-28 20:45:38"
-        }
+        ...
     ]
 }
 若数据库为空
@@ -273,6 +339,17 @@ page = 1	  //当前页码
     "list": []
 }
 **************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
 
 
 **************************************************************************************************************
@@ -290,60 +367,33 @@ page = 1	  //当前页码
     "list": [
         {
             "item_id": "201911260005",
-            "itemType": "device",
+            "item_type": "device",
             "keeper": "Nico",
             "supervisor": "Jack",
-            "recordTime": "2019-11-26 20:05:57",
-            "retireTime": "2019-11-28 20:54:53",
-            "detail": "物品废弃"
+			"recorder": "simon"
+            "record_time": "2019-11-26 20:05:57",
+            "retire_time": "2019-11-28 20:54:53",
+            "detail": "计算器电池损坏"
         },
-        {
-
-            "item_id": "201911260012",
-            "itemType": "item",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "recordTime": "2019-11-26 21:17:53",
-            "retireTime": "2019-11-27 21:17:53",
-            "detail": "物品废弃"
-        },
-        {
-
-            "item_id": "201911260013",
-            "itemType": "item",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "recordTime": "2019-11-26 20:19:56",
-            "retireTime": "2019-11-29 15:53:42",
-            "detail": "此物品已经被摔坏"
-        },
-        {
-
-            "item_id": "201911280001",
-            "itemType": "item",
-            "keeper": "Jack",
-            "supervisor": "Simon",
-            "recordTime": "2019-11-28 19:34:47",
-            "retireTime": "2019-12-07 00:56:18",
-            "detail": "测试"
-        },
-	{
-            "item_id": "201911280005",
-            "itemType": "device",
-            "keeper": "Nico",
-            "supervisor": "Simon",
-            "recordTime": "2019-11-28 20:29:27",
-            "retireTime": "2019-12-07 00:54:47",
-            "detail": "postman"
-        }
+        ...
     ]
 }
 **************************************************************************************************************
 
 
+
+
+
+
+
+
+
+
+
+
 **************************************************************************************************************
-所有健康设备的信息查询
-地址：/admin/Device
+所有设备的信息查询
+地址：/admin/device
 requestbody  get请求    数据类型：(int,int)
 
 发送参数：
@@ -356,115 +406,31 @@ page = 1	  //当前页码
     "list": [
         {
             "item_id": "201911250003",
-            "itemType": "device",
+            "item_type": "device",
             "sn": "10000001",
             "mac": "00-01-6C-06-A1-23",
             "keeper": "Tom",
             "supervisor": "Tom",
             "status": "using",
             "cfrom": "shcool",
-            "recordTime": "2019-11-25 15:53:17",
-            "modifyTime": "2019-11-25 15:53:17"
+            "record_time": "2019-11-25 15:53:17",
+            "modify_time": "2019-11-25 15:53:17",
+			"message": "子越的计算器"
         },
-        {
-            "item_id": "201911250004",
-            "itemType": "device",
-            "sn": "10000002",
-            "mac": "00-01-6C-06-A1-24",
-            "keeper": "Tom",
-            "supervisor": "Tom",
-            "status": "using",
-            "cfrom": "shcool",
-            "recordTime": "2019-11-25 15:54:17",
-            "modifyTime": "2019-11-25 15:54:17"
-        },
-        {
-            "item_id": "201911260001",
-            "itemType": "device",
-            "sn": "10000004",
-            "mac": "00-01-6C-06-A1-31",
-            "keeper": "Nico",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:05:23",
-            "modifyTime": "2019-11-28 00:53:24"
-        },
-        {
-            "item_id": "201911260002",
-            "itemType": "device",
-            "sn": "10000005",
-            "mac": "00-01-6C-06-A1-11",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:05:41",
-            "modifyTime": "2019-11-26 20:05:41"
-        },
-        {
-            "item_id": "201911260003",
-            "itemType": "device",
-            "sn": "10000006",
-            "mac": "00-01-6C-06-A1-11",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:05:46",
-            "modifyTime": "2019-11-26 20:05:46"
-        },
-        {
-            "item_id": "201911260004",
-            "itemType": "device",
-            "sn": "10000007",
-            "mac": "00-01-6C-06-A1-11",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:05:51",
-            "modifyTime": "2019-11-26 20:05:51"
-        },
-        {
-            "item_id": "201911280002",
-            "itemType": "device",
-            "sn": "10000010",
-            "mac": "01-31-7C-06-A1-66",
-            "keeper": "Nico",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "school",
-            "recordTime": "2019-11-28 20:24:52",
-            "modifyTime": "2019-11-28 20:24:52"
-        },
-        {
-            "item_id": "201911280003",
-            "itemType": "device",
-            "sn": "10000010",
-            "mac": "01-31-7C-06-A1-66",
-            "keeper": "Nico",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "school",
-            "recordTime": "2019-11-28 20:26:49",
-            "modifyTime": "2019-11-28 20:26:49"
-        },
-        {
-            "item_id": "201911280004",
-            "itemType": "device",
-            "sn": "10000011",
-            "mac": "01-31-7C-06-A1-76",
-            "keeper": "Nico",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "school",
-            "recordTime": "2019-11-28 20:28:01",
-            "modifyTime": "2019-11-28 20:28:01"
-        }
+        ...
     ]
 }
 **************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
 
 
 **************************************************************************************************************
@@ -482,78 +448,44 @@ page = 1	  //当前页码
     "list": [
         {
             "item_id": "201911260014",
-            "itemType": "item",
+            "item_type": "item",
             "keeper": "Simon",
             "supervisor": "Simon",
             "status": "using",
             "cfrom": "school",
-            "recordTime": "2019-11-26 20:19:57",
-            "modifyTime": "2019-11-26 20:19:57"
+            "record_time": "2019-11-26 20:19:57",
+            "modify_time": "2019-11-26 20:19:57",
+			"message": "老八秘制小汉堡"
         },
-        {
-            "item_id": "201911260015",
-            "itemType": "item",
-            "keeper": "Simon",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "school",
-            "recordTime": "2019-11-26 20:19:57",
-            "modifyTime": "2019-11-26 20:19:57"
-        },
-        {
-            "item_id": "201911260016",
-            "itemType": "item",
-            "keeper": "Simon",
-            "supervisor": "Nico",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:20:09",
-            "modifyTime": "2019-11-29 16:05:58"
-        },
-        {
-            "item_id": "201911260017",
-            "itemType": "item",
-            "keeper": "Lina",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:20:10",
-            "modifyTime": "2019-11-26 20:20:10"
-        },
-        {
-            "item_id": "201911260018",
-            "itemType": "item",
-            "keeper": "Lina",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:20:10",
-            "modifyTime": "2019-11-26 20:20:10"
-        },
-        {
-            "item_id": "201911260019",
-            "itemType": "item",
-            "keeper": "Lina",
-            "supervisor": "Simon",
-            "status": "using",
-            "cfrom": "libary",
-            "recordTime": "2019-11-26 20:20:11",
-            "modifyTime": "2019-11-26 20:20:11"
-        }
+        ...
     ]
 }
 **************************************************************************************************************
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 **************************************************************************************************************
 资产历史信息查询
 地址：/admin/history
-requestbody  get请求    数据类型：(int,int,String)
+requestbody  post 请求    数据类型：(int,int,String)
 
 发送参数：
-rowsPerPage = X   	//当前页面的最大显示行数
-page = 1	  	//当前页码
-itemId = 201911290016   //所查询的资产的资产号
+{
+	"rowsPerPage": 10,
+	"page": 1,
+	"itemId" : "201912070020"
+}
 
 返回格式：
 若查询正确
@@ -561,15 +493,12 @@ itemId = 201911290016   //所查询的资产的资产号
     "total": 3,
     "list": [
         {
-            "item_id": "201911260016",
             "modify_history": "2019-11-28 20:45:38  Keeper changes to Nico.  Supervisor changes to Jack."
         },
         {
-            "item_id": "201911260016",
             "modify_history": "2019-11-28 23:15:25  Keeper changes to Nico.  Supervisor changes to Jack."
         },
         {
-            "item_id": "201911260016",
             "modify_history": "2019-11-28 23:15:26  Keeper changes to Nico.  Supervisor changes to Jack."
         }
     ]
@@ -582,25 +511,36 @@ itemId = 201911290016   //所查询的资产的资产号
 **************************************************************************************************************
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **************************************************************************************************************
-显示最近三个操作记录
+显示最近10个操作记录
 地址：/admin/lately
 get请求 不需要传参
 
 返回格式：
 {
-    "total": 3,
+    "total": 10,
     "list": [
         {
-            "item_id": "201911260016",
             "modify_history": "2019-11-29 15:56:05  Keeper changes to Simon.  Supervisor changes to Nico."
         },
         {
-            "item_id": "201911260016",
             "modify_history": "2019-11-29 15:58:52"
         },
         {
-            "item_id": "201911260016",
             "modify_history": "2019-11-29 16:05:58  Keeper changes to Simon.  Supervisor changes to Nico."
         }
     ]
@@ -608,36 +548,13 @@ get请求 不需要传参
 **************************************************************************************************************
 
 
-**************************************************************************************************************
-编辑设备信息（只开放使用人，负责人和使用状态）
-地址:/admin/editItem
-json格式    requestbody   post请求    数据类型：Map<String,String>
-只需要传递被修改的参数 (keeper supervisor status)
-发送格式：
-{
-	"itemId":"201911260001",
-	"keeper":"Nico",
-	"supervisor":"Simon",
-	"status":"using"
-}
-{
-	"itemId":"201911260001",
-	"keeper":"Nico",
-	"supervisor":"Simon",
-}
-{
-	"itemId":"201911260001",
-	"keeper":"Nico",
-}
-返回格式：
-若编辑成功
-{
-    "result": true,
-    "status": 200
-}
-若编辑失败
-{
-    "result": false,
-    "status": 500
-}
-**************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
