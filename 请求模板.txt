@@ -325,6 +325,7 @@ requestbody  POST请求
 	"itemIdTwo":"201911260099",		如果Two不为空，则为资产号字段查询     PS: Two必须大于One
 	"keeper":"Simon",
 	"supervisor":"Simon",
+	"sn":"",
 	"mac":"",
 	"recordTime":""2019-11-26""     格式必须是xxxx-xx-xx
 }
